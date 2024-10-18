@@ -9,8 +9,10 @@ import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import {useRecoilValue} from 'recoil';
 import {themeAtom} from '../atoms';
 import Lectures from '../screens/Lectures';
+import Login from '../screens/Login';
 
 export type RootStackParamList = {
+  Login: undefined;
   Courses: undefined;
   FolderView: undefined;
   FileView: undefined;
@@ -76,6 +78,11 @@ const Courses = () => {
           },
           headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
         }}>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Courses"
           component={ListCourses}
