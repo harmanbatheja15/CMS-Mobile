@@ -1,118 +1,94 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Courses from './src/Tabs/Courses';
+import Downloads from './src/Tabs/Downloads';
+import Bookmarks from './src/Tabs/Bookmarks';
+import History from './src/Tabs/History';
+import Account from './src/Tabs/Account';
+import {RecoilRoot, useRecoilValue} from 'recoil';
+import {themeAtom} from './src/atoms';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Tab = createBottomTabNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const TabScreens = () => {
+  const theme = useRecoilValue(themeAtom);
+  const isDarkTheme = theme === 'dark';
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        // headerShown: false,
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+          switch (route.name) {
+            case 'My Courses':
+              iconName = 'play-circle-outline';
+              break;
+            case 'Downloads':
+              iconName = 'download';
+              break;
+            case 'Bookmarks':
+              iconName = 'bookmark';
+              break;
+            case 'History':
+              iconName = 'history';
+              break;
+            case 'Account':
+              iconName = 'person';
+              break;
+            default:
+              iconName = 'circle';
+          }
+
+          return <MaterialIcons name={iconName} size={24} color={color} />;
+        },
+        tabBarStyle: {
+          backgroundColor: isDarkTheme ? '#000' : '#F1F5F9',
+          height: 50,
+          //   borderTopLeftRadius: 10,
+          //   borderTopRightRadius: 10,
+          borderTopWidth: 2,
+          borderTopColor: isDarkTheme ? '#1E293B' : '#E2E8F0',
+        },
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: '500',
+        },
+        tabBarActiveTintColor: '#4E7AFF',
+        tabBarInactiveTintColor: '#94A3B8',
+        headerStyle: {
+          backgroundColor: isDarkTheme ? '#000' : '#F1F5F9',
+          elevation: 0, // for Android
+          shadowOpacity: 0, // for iOS
+          borderBottomWidth: 1,
+          borderBottomColor: isDarkTheme ? '#1E293B' : '#E2E8F0',
+        },
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: '700',
+          color: isDarkTheme ? '#fff' : '#000',
+        },
+      })}>
+      <Tab.Screen name="My Courses" component={Courses} />
+      <Tab.Screen name="Downloads" component={Downloads} />
+      <Tab.Screen name="Bookmarks" component={Bookmarks} />
+      <Tab.Screen name="History" component={History} />
+      <Tab.Screen name="Account" component={Account} />
+    </Tab.Navigator>
+  );
+};
+
+const App = () => {
+  return (
+    <RecoilRoot>
+      <NavigationContainer>
+        <TabScreens />
+      </NavigationContainer>
+    </RecoilRoot>
+  );
+};
 
 export default App;
