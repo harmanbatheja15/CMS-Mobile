@@ -7,6 +7,7 @@ import Downloads from './Downloads';
 import Bookmarks from './Bookmarks';
 import History from './History';
 import Account from './Account';
+import CourseStack from './CourseStack';
 
 const BottomTabs = () => {
     const theme = useRecoilValue(themeAtom);
@@ -78,7 +79,7 @@ const BottomTabs = () => {
             })}>
             <Tab.Screen
                 name="My Courses"
-                component={Courses}
+                component={CourseStack}
                 options={{
                     tabBarLabelStyle: {
                         paddingBottom: 10,
