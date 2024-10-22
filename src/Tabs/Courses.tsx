@@ -1,29 +1,22 @@
 import React from 'react';
-import { View, TextInput, Image, useColorScheme } from 'react-native';
+import { View, TextInput, Image } from 'react-native';
+import { useRecoilValue } from 'recoil';
+import { themeAtom } from '../atoms';
 import CourseCard from '../components/CourseCard';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FolderView from '../screens/FolderView';
-import FileView from '../screens/FileView';
-import VideoPlayer from '../screens/VideoPlayer';
 import {
     GestureHandlerRootView,
     ScrollView,
 } from 'react-native-gesture-handler';
-import { useRecoilValue } from 'recoil';
-import { themeAtom } from '../atoms';
-import Lectures from '../screens/Lectures';
-import Login from '../screens/Login';
-import Landing from '../screens/Landing';
-import { RootStackParamList } from '../../App';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
-
-const ListCourses = () => {
+const Courses = () => {
     const theme = useRecoilValue(themeAtom);
     const isDarkTheme = theme === 'dark';
 
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView
+            className={`${
+                isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
+            } flex flex-1`}>
             <ScrollView>
                 <View
                     className={`px-4 py-2 h-full ${
@@ -51,69 +44,9 @@ const ListCourses = () => {
                         />
                     </View>
                     <CourseCard />
-                    <CourseCard />
-                    <CourseCard />
                 </View>
             </ScrollView>
         </GestureHandlerRootView>
-    );
-};
-
-const Courses = () => {
-    const theme = useRecoilValue(themeAtom);
-    const isDarkTheme = theme === 'dark';
-    return (
-        <>
-            <Stack.Navigator
-                initialRouteName="Landing"
-                screenOptions={{
-                    headerStyle: {
-                        backgroundColor: isDarkTheme ? '#020817' : '#FFFFFFF2',
-                    },
-                    headerTitleStyle: {
-                        color: isDarkTheme ? '#F8FAFC' : '#020817',
-                        fontSize: 18,
-                        fontWeight: '700',
-                    },
-                    headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
-                }}>
-                <Stack.Screen
-                    name="Landing"
-                    component={Landing}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Login"
-                    component={Login}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Courses"
-                    component={ListCourses}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="FolderView"
-                    component={FolderView}
-                    options={{ title: 'Folder View' }}
-                />
-                <Stack.Screen
-                    name="FileView"
-                    component={FileView}
-                    options={{ title: 'File View' }}
-                />
-                <Stack.Screen
-                    name="VideoPlayer"
-                    component={VideoPlayer}
-                    options={{ title: 'Video Player' }}
-                />
-                <Stack.Screen
-                    name="Lectures"
-                    component={Lectures}
-                    options={{ title: 'Lectures' }}
-                />
-            </Stack.Navigator>
-        </>
     );
 };
 

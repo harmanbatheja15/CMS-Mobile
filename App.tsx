@@ -1,19 +1,20 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Courses from './src/Tabs/Courses';
-import Downloads from './src/Tabs/Downloads';
-import Bookmarks from './src/Tabs/Bookmarks';
-import History from './src/Tabs/History';
-import Account from './src/Tabs/Account';
 import Landing from './src/screens/Landing';
 import Login from './src/screens/Login';
 import { RecoilRoot, useRecoilValue } from 'recoil';
 import { themeAtom } from './src/atoms';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FolderView from './src/screens/FolderView';
+import FileView from './src/screens/FileView';
+import VideoPlayer from './src/screens/VideoPlayer';
+import Lectures from './src/screens/Lectures';
+import BottomTabs from './src/Tabs/BottomTabs';
 
 export type RootStackParamList = {
     Landing: undefined;
     Login: undefined;
+    BottomTabs: undefined;
     Courses: undefined;
     FolderView: undefined;
     FileView: undefined;
@@ -22,89 +23,70 @@ export type RootStackParamList = {
     Slides: undefined;
 };
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const TabScreens = () => {
+const Navigation = () => {
     const theme = useRecoilValue(themeAtom);
     const isDarkTheme = theme === 'dark';
-
     return (
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                // headerShown: false,
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconName;
-
-                    switch (route.name) {
-                        case 'My Courses':
-                            iconName = 'play-circle-outline';
-                            break;
-                        case 'Downloads':
-                            iconName = 'download';
-                            break;
-                        case 'Bookmarks':
-                            iconName = 'bookmark';
-                            break;
-                        case 'History':
-                            iconName = 'history';
-                            break;
-                        case 'Account':
-                            iconName = 'person';
-                            break;
-                        default:
-                            iconName = 'circle';
-                    }
-
-                    return (
-                        <MaterialIcons
-                            name={iconName}
-                            size={24}
-                            color={color}
-                        />
-                    );
-                },
-                tabBarStyle: {
-                    backgroundColor: isDarkTheme ? '#000' : '#F1F5F9',
-                    height: 50,
-                    //   borderTopLeftRadius: 10,
-                    //   borderTopRightRadius: 10,
-                    borderTopWidth: 2,
-                    borderTopColor: isDarkTheme ? '#1E293B' : '#E2E8F0',
-                },
-                tabBarLabelStyle: {
-                    fontSize: 10,
-                    fontWeight: '500',
-                },
-                tabBarActiveTintColor: '#4E7AFF',
-                tabBarInactiveTintColor: '#94A3B8',
-                headerStyle: {
-                    backgroundColor: isDarkTheme ? '#000' : '#F1F5F9',
-                    elevation: 0, // for Android
-                    shadowOpacity: 0, // for iOS
-                    borderBottomWidth: 1,
-                    borderBottomColor: isDarkTheme ? '#1E293B' : '#E2E8F0',
-                },
-                headerTitleStyle: {
-                    fontSize: 18,
-                    fontWeight: '700',
-                    color: isDarkTheme ? '#fff' : '#000',
-                },
-            })}>
-            <Tab.Screen name="My Courses" component={Courses} />
-            <Tab.Screen name="Downloads" component={Downloads} />
-            <Tab.Screen name="Bookmarks" component={Bookmarks} />
-            <Tab.Screen name="History" component={History} />
-            <Tab.Screen name="Account" component={Account} />
-        </Tab.Navigator>
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="Landing"
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: isDarkTheme ? '#020817' : '#FFFFFFF2',
+                    },
+                    headerTitleStyle: {
+                        color: isDarkTheme ? '#F8FAFC' : '#020817',
+                        fontSize: 18,
+                        fontWeight: '700',
+                    },
+                    headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
+                }}>
+                <Stack.Screen
+                    name="Landing"
+                    component={Landing}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="BottomTabs"
+                    component={BottomTabs}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="FolderView"
+                    component={FolderView}
+                    options={{ title: 'Folder View' }}
+                />
+                <Stack.Screen
+                    name="FileView"
+                    component={FileView}
+                    options={{ title: 'File View' }}
+                />
+                <Stack.Screen
+                    name="VideoPlayer"
+                    component={VideoPlayer}
+                    options={{ title: 'Video Player' }}
+                />
+                <Stack.Screen
+                    name="Lectures"
+                    component={Lectures}
+                    options={{ title: 'Lectures' }}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
 const App = () => {
     return (
         <RecoilRoot>
-            <NavigationContainer>
-                <TabScreens />
-            </NavigationContainer>
+            <Navigation />
         </RecoilRoot>
     );
 };

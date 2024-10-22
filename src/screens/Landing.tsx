@@ -24,7 +24,15 @@ const Landing = () => {
                         isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
                     } h-screen px-4 py-2`}>
                     <View className="w-full flex flex-row justify-center">
-                        <Image source={require('../assets/logo.png')} />
+                        {isDarkTheme ? (
+                            <Image
+                                source={require('../assets/logo-dark.png')}
+                            />
+                        ) : (
+                            <Image
+                                source={require('../assets/logo-light.png')}
+                            />
+                        )}
                     </View>
                     {/* <View className="w-full h-full">
                         <Image
