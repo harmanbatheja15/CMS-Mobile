@@ -1,8 +1,6 @@
-import React from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {RootStackParamList} from '../Tabs/Courses';
-import Video from 'react-native-video';
+import {RootStackParamList} from '../../App';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Slides from '../screens/Slides';
 import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';

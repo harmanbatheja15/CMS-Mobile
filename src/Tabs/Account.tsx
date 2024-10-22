@@ -1,9 +1,63 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Image, Switch, Text, TouchableOpacity, View} from 'react-native';
-import {useRecoilState} from 'recoil';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useRecoilState, useRecoilValue} from 'recoil';
 import {themeAtom} from '../atoms';
+import EditProfile from '../screens/EditProfile';
+import ChangePassword from '../screens/ChangePassword';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// import Logout from '../BottomSheets/Logout';
 
-const Account = () => {
+export type StackParamList = {
+  Account: undefined;
+  EditProfile: undefined;
+  ChangePassword: undefined;
+};
+
+type NavigationProps = NavigationProp<StackParamList>;
+
+const Stack = createNativeStackNavigator<StackParamList>();
+
+const AccountNavigation = () => {
+  const theme = useRecoilValue(themeAtom);
+  const isDarkTheme = theme === 'dark';
+  return (
+    <Stack.Navigator
+      initialRouteName="Account"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: isDarkTheme ? '#020817' : '#FFFFFFF2',
+        },
+        headerTitleStyle: {
+          color: isDarkTheme ? '#F8FAFC' : '#020817',
+          fontSize: 18,
+          fontWeight: '700',
+        },
+        headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
+      }}>
+      <Stack.Screen
+        name="Account"
+        component={AccountPage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{title: 'Edit Profile'}}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePassword}
+        options={{title: 'Change Password'}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AccountPage = () => {
+  const [isLogoutSheetVisible, setIsLogoutSheetVisible] = useState(false);
+  const navigation = useNavigation<NavigationProps>();
   const [theme, setTheme] = useRecoilState(themeAtom);
   const isDarkTheme = theme === 'dark';
   const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(
@@ -58,7 +112,9 @@ const Account = () => {
       </View>
 
       <View className="space-y-4">
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('EditProfile')}>
           <View
             className={`${
               isDarkTheme
@@ -84,7 +140,9 @@ const Account = () => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('ChangePassword')}>
           <View
             className={`${
               isDarkTheme
@@ -110,7 +168,7 @@ const Account = () => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
           <View
             className={`${
               isDarkTheme
@@ -136,7 +194,7 @@ const Account = () => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
           <View
             className={`${
               isDarkTheme
@@ -162,7 +220,9 @@ const Account = () => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => setIsLogoutSheetVisible(true)}>
           <View
             className={`${
               isDarkTheme
@@ -182,9 +242,14 @@ const Account = () => {
             />
           </View>
         </TouchableOpacity>
+        {/* {isLogoutSheetVisible && <Logout />} */}
       </View>
     </View>
   );
+};
+
+const Account = () => {
+  return <AccountNavigation />;
 };
 
 export default Account;

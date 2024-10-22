@@ -16,6 +16,7 @@ const Content = () => {
           : 'bg-[#FFFFFFF2] border-[#E2E8F0]'
       } h-full border`}>
       <TouchableOpacity
+        activeOpacity={0.7}
         onPress={() => setIsDropdownOpen(isDropdownOpen => !isDropdownOpen)}>
         <View
           className={`${

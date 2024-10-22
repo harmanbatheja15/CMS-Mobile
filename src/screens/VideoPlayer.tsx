@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {RootStackParamList} from '../Tabs/Courses';
+import {RootStackParamList} from '../../App';
 import Video from 'react-native-video';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Content from './Content';

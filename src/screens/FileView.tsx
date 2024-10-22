@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {RootStackParamList} from '../Tabs/Courses';
+import {RootStackParamList} from '../../App';
 import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import {useRecoilValue} from 'recoil';
 import {themeAtom} from '../atoms';
@@ -21,7 +21,9 @@ const FileView = () => {
           className={`${
             isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
           } h-screen px-4 py-2`}>
-          <TouchableOpacity onPress={() => navigation.navigate('VideoPlayer')}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('VideoPlayer')}>
             <View
               className={`${
                 isDarkTheme
