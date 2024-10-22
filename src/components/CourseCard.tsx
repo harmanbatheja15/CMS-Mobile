@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Button, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { themeAtom } from '../atoms';
 import { useRecoilValue } from 'recoil';
@@ -7,7 +7,17 @@ import { RootStackParamList } from '../../App';
 
 type NavigationProps = NavigationProp<RootStackParamList>;
 
-const CourseCard = () => {
+interface CourseData {
+    id: number;
+    title: string;
+    imageUrl: string;
+}
+
+interface CourseCardProps {
+    data: CourseData;
+}
+
+const CourseCard = ({ data }: CourseCardProps) => {
     const navigation = useNavigation<NavigationProps>();
     const theme = useRecoilValue(themeAtom);
     const isDarkTheme = theme === 'dark';
@@ -29,12 +39,8 @@ const CourseCard = () => {
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
                         } font-bold text-xl mb-4`}>
-                        Cohort 3.0 | Web Dev
+                        {data.title}
                     </Text>
-                    {/* <Button
-            title="View Content"
-            onPress={() => navigation.navigate('FolderView')}
-          /> */}
                     <TouchableOpacity
                         activeOpacity={0.7}
                         onPress={() => navigation.navigate('FolderView')}
