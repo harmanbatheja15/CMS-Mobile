@@ -6,7 +6,10 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
 import EditProfile from '../screens/EditProfile';
 import ChangePassword from '../screens/ChangePassword';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+    GestureHandlerRootView,
+    ScrollView,
+} from 'react-native-gesture-handler';
 // import Logout from '../BottomSheets/Logout';
 
 export type StackParamList = {
@@ -70,207 +73,251 @@ const AccountPage = () => {
     setTheme(isDarkThemeEnabled ? 'dark' : 'light');
 
     return (
-        <View
+        <GestureHandlerRootView
             className={`${
                 isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-            } p-4 h-screen`}
+            } flex flex-1`}
         >
-            <View className="flex flex-row items-center justify-between">
-                <Text
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View
                     className={`${
-                        isDarkTheme ? 'text-[#fff]' : 'text-[#020817]'
-                    } text-xl font-bold`}
+                        isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
+                    } p-4 flex-1`}
                 >
-                    My Account
-                </Text>
-                <View className="flex flex-row items-center justify-center">
-                    <Switch
-                        trackColor={{ false: '#767577', true: '#3259E8' }}
-                        thumbColor={isDarkThemeEnabled ? '#fff' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isDarkThemeEnabled}
-                    />
-                    <Text
+                    <View className="flex flex-row items-center justify-between">
+                        <Text
+                            className={`${
+                                isDarkTheme ? 'text-[#fff]' : 'text-[#020817]'
+                            } text-xl font-bold`}
+                        >
+                            My Account
+                        </Text>
+                        <View className="flex flex-row items-center justify-center">
+                            <Switch
+                                trackColor={{
+                                    false: '#767577',
+                                    true: '#3259E8',
+                                }}
+                                thumbColor={
+                                    isDarkThemeEnabled ? '#fff' : '#f4f3f4'
+                                }
+                                ios_backgroundColor="#3e3e3e"
+                                onValueChange={toggleSwitch}
+                                value={isDarkThemeEnabled}
+                            />
+                            <Text
+                                className={`${
+                                    isDarkTheme
+                                        ? 'text-[#fff]'
+                                        : 'text-[#020817]'
+                                } ml-3`}
+                            >
+                                Dark Mode
+                            </Text>
+                        </View>
+                    </View>
+                    <View
                         className={`${
-                            isDarkTheme ? 'text-[#fff]' : 'text-[#020817]'
-                        } ml-3`}
+                            isDarkTheme ? 'bg-[#0F172A]' : 'bg-[#F1F5F9]'
+                        } w-32 h-32 rounded-2xl flex items-center justify-center mx-auto mt-6`}
                     >
-                        Dark Mode
-                    </Text>
+                        <Text
+                            className={`${
+                                isDarkTheme
+                                    ? 'text-[#94A3B8]'
+                                    : 'text-[#64748B]'
+                            } font-bold text-xl`}
+                        >
+                            HB
+                        </Text>
+                    </View>
+                    <View className="gap-2 mb-6 mt-2">
+                        <Text
+                            className={`${
+                                isDarkTheme
+                                    ? 'text-[#F8FAFC]'
+                                    : 'text-[#020817]'
+                            } font-bold text-center`}
+                        >
+                            Harman Batheja
+                        </Text>
+                        <Text
+                            className={`${
+                                isDarkTheme
+                                    ? 'text-[#94A3B8]'
+                                    : 'text-[#64748B]'
+                            } font-medium text-center`}
+                        >
+                            harmanbatheja15@gmail.com
+                        </Text>
+                    </View>
+
+                    <View className="space-y-4">
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() => navigation.navigate('EditProfile')}
+                        >
+                            <View
+                                className={`${
+                                    isDarkTheme
+                                        ? 'bg-[#0F172A] border-[#1E293B]'
+                                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
+                                } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                            >
+                                <View className="flex flex-row items-center justify-center">
+                                    <Image
+                                        source={require('../assets/user-icon.png')}
+                                        className="w-6 h-6 mr-3"
+                                    />
+                                    <Text
+                                        className={`${
+                                            isDarkTheme
+                                                ? 'text-[#F8FAFC]'
+                                                : 'text-[#020817]'
+                                        }`}
+                                    >
+                                        Edit Profile
+                                    </Text>
+                                </View>
+                                <Image
+                                    source={require('../assets/chevron-right-icon.png')}
+                                    className="w-6 h-6 mr-3"
+                                />
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() =>
+                                navigation.navigate('ChangePassword')
+                            }
+                        >
+                            <View
+                                className={`${
+                                    isDarkTheme
+                                        ? 'bg-[#0F172A] border-[#1E293B]'
+                                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
+                                } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                            >
+                                <View className="flex flex-row items-center justify-center">
+                                    <Image
+                                        source={require('../assets/lock-icon.png')}
+                                        className="w-6 h-6 mr-3"
+                                    />
+                                    <Text
+                                        className={`${
+                                            isDarkTheme
+                                                ? 'text-[#F8FAFC]'
+                                                : 'text-[#020817]'
+                                        }`}
+                                    >
+                                        Change Password
+                                    </Text>
+                                </View>
+                                <Image
+                                    source={require('../assets/chevron-right-icon.png')}
+                                    className="w-6 h-6 mr-3"
+                                />
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() => {}}
+                        >
+                            <View
+                                className={`${
+                                    isDarkTheme
+                                        ? 'bg-[#0F172A] border-[#1E293B]'
+                                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
+                                } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                            >
+                                <View className="flex flex-row items-center justify-center">
+                                    <Image
+                                        source={require('../assets/info-icon.png')}
+                                        className="w-6 h-6 mr-3"
+                                    />
+                                    <Text
+                                        className={`${
+                                            isDarkTheme
+                                                ? 'text-[#F8FAFC]'
+                                                : 'text-[#020817]'
+                                        }`}
+                                    >
+                                        Terms & Conditions
+                                    </Text>
+                                </View>
+                                <Image
+                                    source={require('../assets/chevron-right-icon.png')}
+                                    className="w-6 h-6 mr-3"
+                                />
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() => {}}
+                        >
+                            <View
+                                className={`${
+                                    isDarkTheme
+                                        ? 'bg-[#0F172A] border-[#1E293B]'
+                                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
+                                } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                            >
+                                <View className="flex flex-row items-center justify-center">
+                                    <Image
+                                        source={require('../assets/shield-icon.png')}
+                                        className="w-6 h-6 mr-3"
+                                    />
+                                    <Text
+                                        className={`${
+                                            isDarkTheme
+                                                ? 'text-[#F8FAFC]'
+                                                : 'text-[#020817]'
+                                        }`}
+                                    >
+                                        Privacy Policy
+                                    </Text>
+                                </View>
+                                <Image
+                                    source={require('../assets/chevron-right-icon.png')}
+                                    className="w-6 h-6 mr-3"
+                                />
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={() => setIsLogoutSheetVisible(true)}
+                        >
+                            <View
+                                className={`${
+                                    isDarkTheme
+                                        ? 'bg-[#0F172A] border-[#1E293B]'
+                                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
+                                } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                            >
+                                <View className="flex flex-row items-center justify-center">
+                                    <Image
+                                        source={require('../assets/logout-icon.png')}
+                                        className="w-6 h-6 mr-3"
+                                    />
+                                    <Text className="text-[#DD503F]">
+                                        Logout
+                                    </Text>
+                                </View>
+                                <Image
+                                    source={require('../assets/chevron-right-red-icon.png')}
+                                    className="w-6 h-6 mr-3"
+                                />
+                            </View>
+                        </TouchableOpacity>
+                        {/* {isLogoutSheetVisible && <Logout />} */}
+                    </View>
                 </View>
-            </View>
-            <View className="gap-2 my-6">
-                <Text
-                    className={`${
-                        isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                    } font-bold text-center`}
-                >
-                    Harman Batheja
-                </Text>
-                <Text
-                    className={`${
-                        isDarkTheme ? 'text-[#94A3B8]' : 'text-[#64748B]'
-                    } font-medium text-center`}
-                >
-                    harmanbatheja15@gmail.com
-                </Text>
-            </View>
-
-            <View className="space-y-4">
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => navigation.navigate('EditProfile')}
-                >
-                    <View
-                        className={`${
-                            isDarkTheme
-                                ? 'bg-[#0F172A] border-[#1E293B]'
-                                : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
-                    >
-                        <View className="flex flex-row items-center justify-center">
-                            <Image
-                                source={require('../assets/user-icon.png')}
-                                className="w-6 h-6 mr-3"
-                            />
-                            <Text
-                                className={`${
-                                    isDarkTheme
-                                        ? 'text-[#F8FAFC]'
-                                        : 'text-[#020817]'
-                                }`}
-                            >
-                                Edit Profile
-                            </Text>
-                        </View>
-                        <Image
-                            source={require('../assets/chevron-right-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => navigation.navigate('ChangePassword')}
-                >
-                    <View
-                        className={`${
-                            isDarkTheme
-                                ? 'bg-[#0F172A] border-[#1E293B]'
-                                : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
-                    >
-                        <View className="flex flex-row items-center justify-center">
-                            <Image
-                                source={require('../assets/lock-icon.png')}
-                                className="w-6 h-6 mr-3"
-                            />
-                            <Text
-                                className={`${
-                                    isDarkTheme
-                                        ? 'text-[#F8FAFC]'
-                                        : 'text-[#020817]'
-                                }`}
-                            >
-                                Change Password
-                            </Text>
-                        </View>
-                        <Image
-                            source={require('../assets/chevron-right-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
-                    <View
-                        className={`${
-                            isDarkTheme
-                                ? 'bg-[#0F172A] border-[#1E293B]'
-                                : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
-                    >
-                        <View className="flex flex-row items-center justify-center">
-                            <Image
-                                source={require('../assets/info-icon.png')}
-                                className="w-6 h-6 mr-3"
-                            />
-                            <Text
-                                className={`${
-                                    isDarkTheme
-                                        ? 'text-[#F8FAFC]'
-                                        : 'text-[#020817]'
-                                }`}
-                            >
-                                Terms & Conditions
-                            </Text>
-                        </View>
-                        <Image
-                            source={require('../assets/chevron-right-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
-                    <View
-                        className={`${
-                            isDarkTheme
-                                ? 'bg-[#0F172A] border-[#1E293B]'
-                                : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
-                    >
-                        <View className="flex flex-row items-center justify-center">
-                            <Image
-                                source={require('../assets/shield-icon.png')}
-                                className="w-6 h-6 mr-3"
-                            />
-                            <Text
-                                className={`${
-                                    isDarkTheme
-                                        ? 'text-[#F8FAFC]'
-                                        : 'text-[#020817]'
-                                }`}
-                            >
-                                Privacy Policy
-                            </Text>
-                        </View>
-                        <Image
-                            source={require('../assets/chevron-right-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => setIsLogoutSheetVisible(true)}
-                >
-                    <View
-                        className={`${
-                            isDarkTheme
-                                ? 'bg-[#0F172A] border-[#1E293B]'
-                                : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
-                    >
-                        <View className="flex flex-row items-center justify-center">
-                            <Image
-                                source={require('../assets/logout-icon.png')}
-                                className="w-6 h-6 mr-3"
-                            />
-                            <Text className="text-[#DD503F]">Logout</Text>
-                        </View>
-                        <Image
-                            source={require('../assets/chevron-right-red-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
-                    </View>
-                </TouchableOpacity>
-                {/* {isLogoutSheetVisible && <Logout />} */}
-            </View>
-        </View>
+            </ScrollView>
+        </GestureHandlerRootView>
     );
 };
 

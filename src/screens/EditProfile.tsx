@@ -9,7 +9,6 @@ import {
 } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type NavigationProps = NavigationProp<RootStackParamList>;
 
@@ -23,13 +22,15 @@ const EditProfile = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } h-screen px-4 py-2`}
+            >
                 {/* Name Field */}
                 <View>
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Name
                     </Text>
                     <View
@@ -37,7 +38,8 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Name"
                             placeholderTextColor={
@@ -57,7 +59,8 @@ const EditProfile = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Email
                     </Text>
                     <View
@@ -65,7 +68,8 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Email"
                             placeholderTextColor={
@@ -85,7 +89,8 @@ const EditProfile = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Phone Number
                     </Text>
                     <View
@@ -93,7 +98,8 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Phone Number"
                             placeholderTextColor={
@@ -110,7 +116,8 @@ const EditProfile = () => {
 
                 <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
                     <Text
-                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}>
+                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}
+                    >
                         Update Profile
                     </Text>
                 </TouchableOpacity>

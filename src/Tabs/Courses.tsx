@@ -42,7 +42,8 @@ const Courses = () => {
         <GestureHandlerRootView
             className={`${
                 isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-            } flex flex-1`}>
+            } flex flex-1`}
+        >
             <ScrollView
                 refreshControl={
                     <RefreshControl
@@ -50,18 +51,21 @@ const Courses = () => {
                         onRefresh={onRefresh}
                     />
                 }
-                showsVerticalScrollIndicator={false}>
+                showsVerticalScrollIndicator={false}
+            >
                 <View
                     className={`px-4 py-2 h-full ${
                         isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                    }`}>
+                    }`}
+                >
                     {/* Search Field */}
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-4 px-4`}>
+                        } flex flex-row items-center border rounded-lg mb-4 px-4`}
+                    >
                         <Image
                             source={require('../assets/search-icon.png')}
                             className="w-6 h-6 mr-3"

@@ -10,6 +10,7 @@ import FileView from './src/screens/FileView';
 import VideoPlayer from './src/screens/VideoPlayer';
 import Lectures from './src/screens/Lectures';
 import BottomTabs from './src/Tabs/BottomTabs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type RootStackParamList = {
     Landing: undefined;

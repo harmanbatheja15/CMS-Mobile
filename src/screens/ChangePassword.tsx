@@ -9,7 +9,6 @@ import {
 } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type NavigationProps = NavigationProp<RootStackParamList>;
 
