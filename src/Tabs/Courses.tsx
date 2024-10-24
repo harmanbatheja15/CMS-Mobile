@@ -1,5 +1,11 @@
-import React from 'react';
-import { View, TextInput, Image } from 'react-native';
+import { useCallback, useState } from 'react';
+import {
+    View,
+    TextInput,
+    Image,
+    RefreshControl,
+    ScrollView,
+} from 'react-native';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
 import CourseCard from '../components/CourseCard';
@@ -15,6 +21,7 @@ type CoursesProps = NativeStackScreenProps<RootStackParamList, 'Courses'>;
 const Courses = () => {
     const theme = useRecoilValue(themeAtom);
     const isDarkTheme = theme === 'dark';
+    const [refreshing, setRefreshing] = useState(false);
 
     if (!COURSES_LIST || COURSES_LIST.length === 0) {
         return (
@@ -24,40 +31,60 @@ const Courses = () => {
         );
     }
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 2000);
+    }, []);
+
     return (
         <GestureHandlerRootView
             className={`${
                 isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
             } flex flex-1`}>
-            <View
-                className={`px-4 py-2 h-full ${
-                    isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                }`}>
-                {/* Search Field */}
-                <View
-                    className={`${
-                        isDarkTheme ? 'border-[#1E293B]' : 'border-[#E2E8F0]'
-                    } flex flex-row items-center border rounded-lg my-4 px-4`}>
-                    <Image
-                        source={require('../assets/search-icon.png')}
-                        className="w-6 h-6 mr-3"
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
                     />
-                    <TextInput
-                        placeholder="Search video..."
-                        placeholderTextColor={isDarkTheme ? '#fff' : '#64748B'}
+                }
+                showsVerticalScrollIndicator={false}>
+                <View
+                    className={`px-4 py-2 h-full ${
+                        isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
+                    }`}>
+                    {/* Search Field */}
+                    <View
                         className={`${
-                            isDarkTheme ? 'text-[#fff]' : 'text-[#64748B]'
-                        } w-full`}
+                            isDarkTheme
+                                ? 'border-[#1E293B]'
+                                : 'border-[#E2E8F0]'
+                        } flex flex-row items-center border rounded-lg my-4 px-4`}>
+                        <Image
+                            source={require('../assets/search-icon.png')}
+                            className="w-6 h-6 mr-3"
+                        />
+                        <TextInput
+                            placeholder="Search video..."
+                            placeholderTextColor={
+                                isDarkTheme ? '#fff' : '#64748B'
+                            }
+                            className={`${
+                                isDarkTheme ? 'text-[#fff]' : 'text-[#64748B]'
+                            } w-full`}
+                        />
+                    </View>
+                    <FlashList
+                        data={COURSES_LIST}
+                        estimatedItemSize={100}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item }) => <CourseCard data={item} />}
+                        showsVerticalScrollIndicator={false}
                     />
                 </View>
-                <FlashList
-                    data={COURSES_LIST}
-                    estimatedItemSize={100}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item }) => <CourseCard data={item} />}
-                    showsVerticalScrollIndicator={false}
-                />
-            </View>
+            </ScrollView>
         </GestureHandlerRootView>
     );
 };

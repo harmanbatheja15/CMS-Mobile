@@ -21,48 +21,6 @@ export const COURSES_LIST = [
     },
 ];
 
-export const HISTORY_DATA = [
-    {
-        title: 'Today',
-        data: [
-            {
-                id: 1,
-                title: 'HTML Introduction',
-            },
-            {
-                id: 2,
-                title: 'CSS Introduction',
-            },
-        ],
-    },
-    {
-        title: 'Today',
-        data: [
-            {
-                id: 1,
-                title: 'JS Introduction',
-            },
-            {
-                id: 2,
-                title: 'Advance JS',
-            },
-        ],
-    },
-    {
-        title: 'Yesterday',
-        data: [
-            {
-                id: 1,
-                title: 'HTML Introduction',
-            },
-            {
-                id: 2,
-                title: 'CSS Introduction',
-            },
-        ],
-    },
-];
-
 export const FOLDER_DATA = [
     {
         id: 1,
@@ -222,5 +180,78 @@ export const DOWNLOADED_LECTURES = [
         id: 9,
         title: 'React JS Intro',
         postedOn: '12 Aug, 2024',
+    },
+];
+
+export const HISTORY_DATA = [
+    {
+        title: 'Today',
+        data: [
+            {
+                id: 1,
+                title: 'HTML Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 2,
+                title: 'CSS Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+        ],
+    },
+    {
+        title: 'Today',
+        data: [
+            {
+                id: 1,
+                title: 'JS Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 2,
+                title: 'Advance JS',
+                lastUpdated: '10 Aug 2024',
+            },
+        ],
+    },
+    {
+        title: 'Yesterday',
+        data: [
+            {
+                id: 1,
+                title: 'HTML Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 2,
+                title: 'CSS Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 3,
+                title: 'CSS Intro',
+                lastUpdated: '10 Aug 2024',
+            },
+        ],
+    },
+    {
+        title: 'Yesterday',
+        data: [
+            {
+                id: 1,
+                title: 'HTML Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 2,
+                title: 'CSS Introduction',
+                lastUpdated: '10 Aug 2024',
+            },
+            {
+                id: 3,
+                title: 'CSS Intro',
+                lastUpdated: '10 Aug 2024',
+            },
+        ],
     },
 ];

@@ -64,12 +64,14 @@ const FileCard = ({ data }: FileCardProps) => {
                 </View>
                 <View className="flex flex-row gap-2">
                     {data.isCompleted && (
-                        <Image
-                            source={require('../assets/tick-icon.png')}
-                            className="w-6 h-6"
-                        />
+                        <TouchableOpacity activeOpacity={0.9}>
+                            <Image
+                                source={require('../assets/tick-icon.png')}
+                                className="w-6 h-6"
+                            />
+                        </TouchableOpacity>
                     )}
-                    <TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.7}>
                         <Image
                             source={require('../assets/bookmark-icon.png')}
                             className="w-6 h-6"

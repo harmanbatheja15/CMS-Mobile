@@ -64,10 +64,12 @@ const FolderCard = ({ data }: FolderCardProps) => {
                 </View>
                 {data.isCompleted && (
                     <View className="flex flex-row gap-2">
-                        <Image
-                            source={require('../assets/tick-icon.png')}
-                            className="w-6 h-6"
-                        />
+                        <TouchableOpacity activeOpacity={0.9}>
+                            <Image
+                                source={require('../assets/tick-icon.png')}
+                                className="w-6 h-6"
+                            />
+                        </TouchableOpacity>
                     </View>
                 )}
             </View>

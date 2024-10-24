@@ -59,10 +59,6 @@ const Login = () => {
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
                         } flex flex-row items-center border rounded-lg my-2 px-4`}>
-                        <Image
-                            source={require('../assets/search-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
                         <TextInput
                             placeholder="Enter Email ID / Phone no."
                             placeholderTextColor={
@@ -91,10 +87,6 @@ const Login = () => {
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
                         } flex flex-row items-center border rounded-lg my-2 px-4`}>
-                        <Image
-                            source={require('../assets/search-icon.png')}
-                            className="w-6 h-6 mr-3"
-                        />
                         <TextInput
                             placeholder="Enter Password"
                             placeholderTextColor={

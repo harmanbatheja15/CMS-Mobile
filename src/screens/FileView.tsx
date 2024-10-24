@@ -2,10 +2,7 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
-import {
-    GestureHandlerRootView,
-    ScrollView,
-} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
 import { FILE_DATA } from '../data/constants';
@@ -33,7 +30,7 @@ const FileView = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } flex-1 px-4 py-2`}>
                 <FlashList
                     data={FILE_DATA}
                     estimatedItemSize={100}
