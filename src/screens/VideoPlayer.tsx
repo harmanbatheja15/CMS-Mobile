@@ -43,7 +43,8 @@ const SlidingTabs = () => {
                 },
                 tabBarPressColor: '#334155',
                 tabBarScrollEnabled: false,
-            }}>
+            }}
+        >
             <Tab.Screen name="Content" component={Content} />
             <Tab.Screen name="Chapters" component={Chapters} />
             <Tab.Screen name="Slides" component={Slides} />
@@ -61,23 +62,27 @@ const VideoPlayer = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } flex-1 px-4 py-2`}
+            >
                 <View>
-                    <Video
-                        source={{
-                            uri: 'https://media.istockphoto.com/id/1450313535/video/eco-friendly-cars-drive-on-elevated-roads.mp4?s=mp4-640x640-is&k=20&c=yLkIiF5a7XWHfqnmSHOuXL-gy5D3UNlwGpzzh7dXWKw=',
-                        }}
-                        paused={false}
-                        repeat={true}
-                        allowsExternalPlayback={true}
-                        playInBackground={true}
-                        controls={true}
-                        className="w-full h-80"
-                    />
+                    <View className="w-full h-80">
+                        <Video
+                            source={{
+                                uri: 'https://media.istockphoto.com/id/1450313535/video/eco-friendly-cars-drive-on-elevated-roads.mp4?s=mp4-640x640-is&k=20&c=yLkIiF5a7XWHfqnmSHOuXL-gy5D3UNlwGpzzh7dXWKw=',
+                            }}
+                            paused={false}
+                            repeat={true}
+                            allowsExternalPlayback={true}
+                            playInBackground={true}
+                            controls={true}
+                            className="w-full h-80"
+                        />
+                    </View>
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        } font-bold text-2xl my-4`}>
+                        } font-bold text-2xl my-4`}
+                    >
                         Introduction to HTML
                     </Text>
                 </View>
