@@ -35,7 +35,8 @@ const AccountNavigation = () => {
                     fontWeight: '700',
                 },
                 headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
-            }}>
+            }}
+        >
             <Stack.Screen
                 name="Account"
                 component={AccountPage}
@@ -72,12 +73,14 @@ const AccountPage = () => {
         <View
             className={`${
                 isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-            } p-4 h-screen`}>
+            } p-4 h-screen`}
+        >
             <View className="flex flex-row items-center justify-between">
                 <Text
                     className={`${
                         isDarkTheme ? 'text-[#fff]' : 'text-[#020817]'
-                    } text-xl font-bold`}>
+                    } text-xl font-bold`}
+                >
                     My Account
                 </Text>
                 <View className="flex flex-row items-center justify-center">
@@ -91,7 +94,8 @@ const AccountPage = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#fff]' : 'text-[#020817]'
-                        } ml-3`}>
+                        } ml-3`}
+                    >
                         Dark Mode
                     </Text>
                 </View>
@@ -100,13 +104,15 @@ const AccountPage = () => {
                 <Text
                     className={`${
                         isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                    } font-bold text-center`}>
+                    } font-bold text-center`}
+                >
                     Harman Batheja
                 </Text>
                 <Text
                     className={`${
                         isDarkTheme ? 'text-[#94A3B8]' : 'text-[#64748B]'
-                    } font-medium text-center`}>
+                    } font-medium text-center`}
+                >
                     harmanbatheja15@gmail.com
                 </Text>
             </View>
@@ -114,13 +120,15 @@ const AccountPage = () => {
             <View className="space-y-4">
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('EditProfile')}>
+                    onPress={() => navigation.navigate('EditProfile')}
+                >
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'bg-[#0F172A] border-[#1E293B]'
                                 : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}>
+                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                    >
                         <View className="flex flex-row items-center justify-center">
                             <Image
                                 source={require('../assets/user-icon.png')}
@@ -131,7 +139,8 @@ const AccountPage = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                }`}>
+                                }`}
+                            >
                                 Edit Profile
                             </Text>
                         </View>
@@ -144,13 +153,15 @@ const AccountPage = () => {
 
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('ChangePassword')}>
+                    onPress={() => navigation.navigate('ChangePassword')}
+                >
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'bg-[#0F172A] border-[#1E293B]'
                                 : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}>
+                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                    >
                         <View className="flex flex-row items-center justify-center">
                             <Image
                                 source={require('../assets/lock-icon.png')}
@@ -161,7 +172,8 @@ const AccountPage = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                }`}>
+                                }`}
+                            >
                                 Change Password
                             </Text>
                         </View>
@@ -178,7 +190,8 @@ const AccountPage = () => {
                             isDarkTheme
                                 ? 'bg-[#0F172A] border-[#1E293B]'
                                 : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}>
+                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                    >
                         <View className="flex flex-row items-center justify-center">
                             <Image
                                 source={require('../assets/info-icon.png')}
@@ -189,7 +202,8 @@ const AccountPage = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                }`}>
+                                }`}
+                            >
                                 Terms & Conditions
                             </Text>
                         </View>
@@ -206,7 +220,8 @@ const AccountPage = () => {
                             isDarkTheme
                                 ? 'bg-[#0F172A] border-[#1E293B]'
                                 : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}>
+                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                    >
                         <View className="flex flex-row items-center justify-center">
                             <Image
                                 source={require('../assets/shield-icon.png')}
@@ -217,7 +232,8 @@ const AccountPage = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                }`}>
+                                }`}
+                            >
                                 Privacy Policy
                             </Text>
                         </View>
@@ -230,13 +246,15 @@ const AccountPage = () => {
 
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={() => setIsLogoutSheetVisible(true)}>
+                    onPress={() => setIsLogoutSheetVisible(true)}
+                >
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'bg-[#0F172A] border-[#1E293B]'
                                 : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}>
+                        } flex flex-row items-center justify-between border p-4 rounded-2xl`}
+                    >
                         <View className="flex flex-row items-center justify-center">
                             <Image
                                 source={require('../assets/logout-icon.png')}

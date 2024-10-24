@@ -4,7 +4,6 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
 import {
     GestureHandlerRootView,
-    ScrollView,
     TextInput,
 } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
@@ -22,7 +21,8 @@ const Login = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } h-screen px-4 py-2`}
+            >
                 <View className="flex flex-row items-center mb-7">
                     <View className="space-y-2">
                         <Text
@@ -30,7 +30,8 @@ const Login = () => {
                                 isDarkTheme
                                     ? 'text-[#F8FAFC]'
                                     : 'text-[#020817]'
-                            } text-2xl font-bold`}>
+                            } text-2xl font-bold`}
+                        >
                             Login Now
                         </Text>
                         <Text
@@ -38,7 +39,8 @@ const Login = () => {
                                 isDarkTheme
                                     ? 'text-[#94A3B8]'
                                     : 'text-[#64748B]'
-                            } text-sm`}>
+                            } text-sm`}
+                        >
                             Log in to access your coding cohorts and continue
                             your journey.
                         </Text>
@@ -50,7 +52,8 @@ const Login = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Email ID / Phone no.
                     </Text>
                     <View
@@ -58,7 +61,8 @@ const Login = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Email ID / Phone no."
                             placeholderTextColor={
@@ -78,7 +82,8 @@ const Login = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Password
                     </Text>
                     <View
@@ -86,7 +91,8 @@ const Login = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Password"
                             placeholderTextColor={
@@ -104,19 +110,31 @@ const Login = () => {
                 <Text
                     className={`${
                         isDarkTheme ? 'text-[#4E7AFF]' : 'text-[#3259E8]'
-                    }`}>
+                    }`}
+                >
                     Forgot Password?
                 </Text>
 
                 <TouchableOpacity
                     activeOpacity={0.7}
                     onPress={() => navigation.navigate('BottomTabs')}
-                    className="mt-8">
+                    className="mt-8"
+                >
                     <Text
-                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}>
+                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}
+                    >
                         Login
                     </Text>
                 </TouchableOpacity>
+                <Text className="text-[#94A3B8] font-medium mt-4 text-center">
+                    Don't have an account?{' '}
+                    <Text
+                        className="text-[#4E7AFF]"
+                        onPress={() => navigation.navigate('BottomTabs')}
+                    >
+                        Sign up
+                    </Text>
+                </Text>
             </View>
         </GestureHandlerRootView>
     );

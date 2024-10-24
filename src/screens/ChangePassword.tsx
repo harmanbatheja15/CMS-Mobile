@@ -23,13 +23,15 @@ const ChangePassword = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } h-screen px-4 py-2`}
+            >
                 {/* Current Password Field */}
                 <View>
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         Current Password
                     </Text>
                     <View
@@ -37,7 +39,8 @@ const ChangePassword = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter Current Password"
                             placeholderTextColor={
@@ -57,7 +60,8 @@ const ChangePassword = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
+                        }`}
+                    >
                         New Password
                     </Text>
                     <View
@@ -65,7 +69,8 @@ const ChangePassword = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
                             placeholder="Enter New Password"
                             placeholderTextColor={
@@ -85,17 +90,19 @@ const ChangePassword = () => {
                     <Text
                         className={`${
                             isDarkTheme ? 'text-[#F8FAFC]' : 'text-[#020817]'
-                        }`}>
-                        New Password
+                        }`}
+                    >
+                        Confirm New Password
                     </Text>
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                    >
                         <TextInput
-                            placeholder="Enter New Password"
+                            placeholder="Confirm New Password"
                             placeholderTextColor={
                                 isDarkTheme ? '#94A3B8' : '#64748B'
                             }
@@ -110,7 +117,8 @@ const ChangePassword = () => {
 
                 <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
                     <Text
-                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}>
+                        className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}
+                    >
                         Update Password
                     </Text>
                 </TouchableOpacity>

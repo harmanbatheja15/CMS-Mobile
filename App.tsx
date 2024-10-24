@@ -42,7 +42,8 @@ const Navigation = () => {
                         fontWeight: '700',
                     },
                     headerTintColor: isDarkTheme ? '#F8FAFC' : '#020817',
-                }}>
+                }}
+            >
                 <Stack.Screen
                     name="Landing"
                     component={Landing}
@@ -51,7 +52,7 @@ const Navigation = () => {
                 <Stack.Screen
                     name="Login"
                     component={Login}
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true, title: 'Back' }}
                 />
                 <Stack.Screen
                     name="BottomTabs"

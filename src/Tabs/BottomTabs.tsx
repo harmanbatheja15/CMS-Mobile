@@ -76,7 +76,8 @@ const BottomTabs = () => {
                     fontWeight: '700',
                     color: isDarkTheme ? '#fff' : '#000',
                 },
-            })}>
+            })}
+        >
             <Tab.Screen
                 name="My Courses"
                 component={Courses}
@@ -88,20 +89,23 @@ const BottomTabs = () => {
                         <View
                             className={`${
                                 isDarkTheme ? 'bg-[#000]' : 'bg-[#F1F5F9]'
-                            } p-4`}>
+                            } p-4`}
+                        >
                             <View className="flex flex-row items-center">
                                 <View
                                     className={`${
                                         isDarkTheme
                                             ? 'bg-[#0F172A]'
                                             : 'bg-[#F1F5F9]'
-                                    } w-12 h-12 rounded-full items-center justify-center`}>
+                                    } w-12 h-12 rounded-full items-center justify-center`}
+                                >
                                     <Text
                                         className={`${
                                             isDarkTheme
                                                 ? 'text-[#94A3B8]'
                                                 : 'text-[#64748B]'
-                                        } font-medium text-base`}>
+                                        } font-medium text-base`}
+                                    >
                                         HB
                                     </Text>
                                 </View>
@@ -110,7 +114,8 @@ const BottomTabs = () => {
                                         isDarkTheme
                                             ? 'text-[#F8FAFC]'
                                             : 'text-[#020817]'
-                                    } font-bold text-xl ml-2`}>
+                                    } font-bold text-xl ml-2`}
+                                >
                                     Hi, Harman
                                 </Text>
                             </View>
@@ -119,7 +124,8 @@ const BottomTabs = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                } font-bold mt-4 text-2xl`}>
+                                } font-bold mt-4 text-2xl`}
+                            >
                                 My Courses
                             </Text>
                         </View>
