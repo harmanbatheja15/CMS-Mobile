@@ -24,20 +24,23 @@ const FileCard = ({ data }: FileCardProps) => {
     return (
         <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('VideoPlayer')}>
+            onPress={() => navigation.navigate('VideoPlayer')}
+        >
             <View
                 className={`${
                     isDarkTheme
                         ? 'bg-[#0F172A] border-[#1E293B]'
-                        : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                } flex flex-row items-center justify-between p-4 rounded-lg border my-2`}>
+                        : 'bg-[#F1F5F9] border-[#E2E8F0]'
+                } flex flex-row items-center justify-between p-4 rounded-lg border my-2`}
+            >
                 <View className="flex flex-row items-center w-[60%]">
                     <View
                         className={`${
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } border p-4 mr-3 rounded-md`}>
+                        } border p-4 mr-3 rounded-md`}
+                    >
                         <Image
                             source={require('../assets/folder-icon.png')}
                             className="w-6 h-6"
@@ -49,7 +52,8 @@ const FileCard = ({ data }: FileCardProps) => {
                                 isDarkTheme
                                     ? 'text-[#F8FAFC]'
                                     : 'text-[#020817]'
-                            } text-sm`}>
+                            } text-sm`}
+                        >
                             {data.title}
                         </Text>
                         <Text
@@ -57,7 +61,8 @@ const FileCard = ({ data }: FileCardProps) => {
                                 isDarkTheme
                                     ? 'text-[#94A3B8]'
                                     : 'text-[#64748B]'
-                            } text-xs`}>
+                            } text-xs`}
+                        >
                             {data.postedOn}
                         </Text>
                     </View>

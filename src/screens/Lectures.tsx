@@ -16,12 +16,14 @@ const Lectures = () => {
                 isDarkTheme
                     ? 'bg-[#020817] border-[#1E293B]'
                     : 'bg-[#FFFFFFF2] border-[#E2E8F0]'
-            } h-full border p-4 space-y-4`}>
+            } h-full border p-4 space-y-4`}
+        >
             {/* Search Field */}
             <View
                 className={`${
                     isDarkTheme ? 'border-[#1E293B]' : 'border-[#E2E8F0]'
-                } flex flex-row items-center border rounded-lg my-2 px-4`}>
+                } flex flex-row items-center border rounded-lg my-2 px-4`}
+            >
                 <Image
                     source={require('../assets/search-icon.png')}
                     className="w-6 h-6 mr-3"
@@ -38,20 +40,23 @@ const Lectures = () => {
             {/* Lectures */}
             <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={() => navigation.navigate('VideoPlayer')}>
+                onPress={() => navigation.navigate('VideoPlayer')}
+            >
                 <View
                     className={`${
                         isDarkTheme
                             ? 'bg-[#0F172A] border-[#1E293B]'
-                            : 'bg-[#E2E8F0] border-[#E2E8F0]'
-                    } flex flex-row items-center justify-between p-4 rounded-lg border`}>
+                            : 'bg-[#F1F5F9] border-[#E2E8F0]'
+                    } flex flex-row items-center justify-between p-4 rounded-lg border`}
+                >
                     <View className="flex flex-row items-center w-[60%]">
                         <View
                             className={`border ${
                                 isDarkTheme
                                     ? 'border-[#1E293B]'
                                     : 'border-[#E2E8F0]'
-                            } p-4 mr-3 rounded-md`}>
+                            } p-4 mr-3 rounded-md`}
+                        >
                             <Image
                                 source={require('../assets/play-icon.png')}
                                 className="w-6 h-6"
@@ -63,7 +68,8 @@ const Lectures = () => {
                                     isDarkTheme
                                         ? 'text-[#F8FAFC]'
                                         : 'text-[#020817]'
-                                } text-sm`}>
+                                } text-sm`}
+                            >
                                 HTML Introduction
                             </Text>
                             <Text
@@ -71,7 +77,8 @@ const Lectures = () => {
                                     isDarkTheme
                                         ? 'text-[#94A3B8]'
                                         : 'text-[#64748B]'
-                                } text-xs`}>
+                                } text-xs`}
+                            >
                                 Posted on : 10 Aug 2024
                             </Text>
                         </View>

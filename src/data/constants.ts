@@ -190,12 +190,12 @@ export const HISTORY_DATA = [
             {
                 id: 1,
                 title: 'HTML Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 2,
                 title: 'CSS Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
         ],
     },
@@ -205,12 +205,12 @@ export const HISTORY_DATA = [
             {
                 id: 1,
                 title: 'JS Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 2,
                 title: 'Advance JS',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
         ],
     },
@@ -220,17 +220,17 @@ export const HISTORY_DATA = [
             {
                 id: 1,
                 title: 'HTML Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 2,
                 title: 'CSS Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 3,
                 title: 'CSS Intro',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
         ],
     },
@@ -240,17 +240,17 @@ export const HISTORY_DATA = [
             {
                 id: 1,
                 title: 'HTML Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 2,
                 title: 'CSS Introduction',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
             {
                 id: 3,
                 title: 'CSS Intro',
-                lastUpdated: '10 Aug 2024',
+                postedOn: '10 Aug 2024',
             },
         ],
     },

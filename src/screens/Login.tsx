@@ -1,5 +1,11 @@
-import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import {
+    Text,
+    View,
+    TouchableOpacity,
+    Alert,
+    ActivityIndicator,
+} from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
 import {
@@ -12,9 +18,18 @@ import { themeAtom } from '../atoms';
 type NavigationProps = NavigationProp<RootStackParamList>;
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigation = useNavigation<NavigationProps>();
     const theme = useRecoilValue(themeAtom);
     const isDarkTheme = theme === 'dark';
+
+    const handleSubmit = async () => {
+        if (!email || !password) {
+            Alert.alert('Error', 'Please fill in all fields');
+            return;
+        }
+    };
 
     return (
         <GestureHandlerRootView className="flex flex-1">
@@ -64,6 +79,9 @@ const Login = () => {
                         } flex flex-row items-center border rounded-lg my-2 px-4`}
                     >
                         <TextInput
+                            value={email}
+                            onChangeText={setEmail}
+                            autoCapitalize="none"
                             placeholder="Enter Email ID / Phone no."
                             placeholderTextColor={
                                 isDarkTheme ? '#94A3B8' : '#64748B'
@@ -94,6 +112,10 @@ const Login = () => {
                         } flex flex-row items-center border rounded-lg my-2 px-4`}
                     >
                         <TextInput
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry
+                            autoCapitalize="none"
                             placeholder="Enter Password"
                             placeholderTextColor={
                                 isDarkTheme ? '#94A3B8' : '#64748B'
@@ -110,16 +132,12 @@ const Login = () => {
                 <Text
                     className={`${
                         isDarkTheme ? 'text-[#4E7AFF]' : 'text-[#3259E8]'
-                    }`}
+                    } mb-4`}
                 >
                     Forgot Password?
                 </Text>
 
-                <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => navigation.navigate('BottomTabs')}
-                    className="mt-8"
-                >
+                <TouchableOpacity activeOpacity={0.7} onPress={handleSubmit}>
                     <Text
                         className={`bg-[#3259E8] text-[#FFFFFF] rounded-2xl py-4 px-6 text-center`}
                     >

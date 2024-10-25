@@ -88,7 +88,7 @@ const BottomTabs = () => {
                     header: () => (
                         <View
                             className={`${
-                                isDarkTheme ? 'bg-[#000]' : 'bg-[#F1F5F9]'
+                                isDarkTheme ? 'bg-[#000]' : 'bg-[#fff]'
                             } p-4`}
                         >
                             <View className="flex flex-row items-center">

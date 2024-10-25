@@ -10,12 +10,13 @@ import {
     GestureHandlerRootView,
     ScrollView,
 } from 'react-native-gesture-handler';
-// import Logout from '../BottomSheets/Logout';
+import Logout from '../BottomSheets/Logout';
 
 export type StackParamList = {
     Account: undefined;
     EditProfile: undefined;
     ChangePassword: undefined;
+    Landing: undefined;
 };
 
 type NavigationProps = NavigationProp<StackParamList>;
@@ -313,10 +314,10 @@ const AccountPage = () => {
                                 />
                             </View>
                         </TouchableOpacity>
-                        {/* {isLogoutSheetVisible && <Logout />} */}
                     </View>
                 </View>
             </ScrollView>
+            {isLogoutSheetVisible && <Logout />}
         </GestureHandlerRootView>
     );
 };
