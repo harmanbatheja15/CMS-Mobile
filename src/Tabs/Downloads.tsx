@@ -3,10 +3,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Slides from '../screens/Slides';
-import {
-    GestureHandlerRootView,
-    ScrollView,
-} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Lectures from '../screens/Lectures';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
@@ -41,7 +38,8 @@ const SlidingTabs = () => {
                 },
                 tabBarPressColor: '#334155',
                 tabBarScrollEnabled: false,
-            }}>
+            }}
+        >
             <Tab.Screen name="Lectures" component={Lectures} />
             <Tab.Screen name="Slides" component={Slides} />
         </Tab.Navigator>
@@ -58,7 +56,8 @@ const Downloads = () => {
             <View
                 className={`${
                     isDarkTheme ? 'bg-[#020817]' : 'bg-[#FFFFFFF2]'
-                } h-screen px-4 py-2`}>
+                } h-screen px-4 py-2`}
+            >
                 <SlidingTabs />
             </View>
         </GestureHandlerRootView>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useRecoilValue } from 'recoil';
@@ -6,11 +7,30 @@ import Courses from './Courses';
 import Downloads from './Downloads';
 import Bookmarks from './Bookmarks';
 import History from './History';
-import Account from './Account';
 import { Text, View } from 'react-native';
+import { useAuth } from '../hooks/useAuth';
+import AccountScreen from './Account';
 
 const BottomTabs = () => {
+    const { getUserData } = useAuth();
     const theme = useRecoilValue(themeAtom);
+    const [username, setUsername] = useState<string | null>('');
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const userData = await getUserData();
+                const username =
+                    (userData && userData?.name.split(' ')[0]) || 'User';
+                setUsername(username);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
     const isDarkTheme = theme === 'dark';
 
     const Tab = createBottomTabNavigator();
@@ -116,7 +136,7 @@ const BottomTabs = () => {
                                             : 'text-[#020817]'
                                     } font-bold text-xl ml-2`}
                                 >
-                                    Hi, Harman
+                                    Hi, {username}
                                 </Text>
                             </View>
                             <Text
@@ -161,7 +181,7 @@ const BottomTabs = () => {
             />
             <Tab.Screen
                 name="Account"
-                component={Account}
+                component={AccountScreen}
                 options={{
                     tabBarLabelStyle: {
                         paddingBottom: 10,

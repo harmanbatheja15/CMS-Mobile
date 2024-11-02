@@ -11,6 +11,8 @@ import {
     ScrollView,
 } from 'react-native-gesture-handler';
 import Logout from '../BottomSheets/Logout';
+import { useAuth } from '../hooks/useAuth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type StackParamList = {
     Account: undefined;
@@ -61,6 +63,9 @@ const AccountNavigation = () => {
 };
 
 const AccountPage = () => {
+    const [name, setName] = useState<string | null>('');
+    const [email, setEmail] = useState<string | null>('');
+    const { logout, getUserData } = useAuth();
     const [isLogoutSheetVisible, setIsLogoutSheetVisible] = useState(false);
     const navigation = useNavigation<NavigationProps>();
     const [theme, setTheme] = useRecoilState(themeAtom);
@@ -71,7 +76,26 @@ const AccountPage = () => {
     const toggleSwitch = () =>
         setIsDarkThemeEnabled(previousState => !previousState);
 
+    useEffect(() => {
+        const fetchUsername = async () => {
+            try {
+                const userData = await getUserData();
+                const name = userData && userData?.name;
+                const email = userData && userData?.email;
+                setName(name);
+                setEmail(email);
+            } catch (e) {
+                console.log('error: ', e);
+            }
+        };
+        fetchUsername();
+    }, []);
+
     setTheme(isDarkThemeEnabled ? 'dark' : 'light');
+
+    const handleLogout = async () => {
+        await logout();
+    };
 
     return (
         <GestureHandlerRootView
@@ -140,7 +164,7 @@ const AccountPage = () => {
                                     : 'text-[#020817]'
                             } font-bold text-center`}
                         >
-                            Harman Batheja
+                            {name}
                         </Text>
                         <Text
                             className={`${
@@ -149,7 +173,7 @@ const AccountPage = () => {
                                     : 'text-[#64748B]'
                             } font-medium text-center`}
                         >
-                            harmanbatheja15@gmail.com
+                            {email}
                         </Text>
                     </View>
 
@@ -290,7 +314,8 @@ const AccountPage = () => {
 
                         <TouchableOpacity
                             activeOpacity={0.7}
-                            onPress={() => setIsLogoutSheetVisible(true)}
+                            // onPress={() => setIsLogoutSheetVisible(true)}
+                            onPress={handleLogout}
                         >
                             <View
                                 className={`${

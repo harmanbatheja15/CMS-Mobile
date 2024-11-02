@@ -26,6 +26,9 @@ const Logout = () => {
             <BottomSheet
                 ref={bottomSheetRef}
                 onChange={handleSheetChanges}
+                onClose={() => {
+                    bottomSheetRef.current?.close();
+                }}
                 backgroundStyle={{
                     backgroundColor: isDarkTheme ? '#020817' : '#FFFFFF',
                     borderRadius: 20,
@@ -57,7 +60,7 @@ const Logout = () => {
                     </Text>
                     <View className="flex flex-row items-center justify-center w-full mt-2 mb-6">
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('EditProfile')}
+                            onPress={() => {}}
                             className={`${
                                 isDarkTheme
                                     ? 'bg-[#020817] border-[#1E293B]'
