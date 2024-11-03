@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Alert,
     ActivityIndicator,
+    Platform,
 } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
@@ -80,7 +81,9 @@ const Login = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                        } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <TextInput
                             value={email}
@@ -114,7 +117,9 @@ const Login = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                        } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <TextInput
                             value={password}

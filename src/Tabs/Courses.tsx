@@ -5,6 +5,7 @@ import {
     Image,
     RefreshControl,
     ScrollView,
+    Platform,
 } from 'react-native';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
@@ -107,7 +108,9 @@ const Courses = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg mb-4 px-4`}
+                        } flex flex-row items-center border rounded-lg mb-4 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <Image
                             source={require('../assets/search-icon.png')}

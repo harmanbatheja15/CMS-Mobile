@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../App';
 import {
@@ -38,7 +38,9 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                        } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <TextInput
                             placeholder="Enter Name"
@@ -68,7 +70,9 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                        } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <TextInput
                             placeholder="Enter Email"
@@ -98,7 +102,9 @@ const EditProfile = () => {
                             isDarkTheme
                                 ? 'border-[#1E293B]'
                                 : 'border-[#E2E8F0]'
-                        } flex flex-row items-center border rounded-lg my-2 px-4`}
+                        } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                            Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                        }`}
                     >
                         <TextInput
                             placeholder="Enter Phone Number"

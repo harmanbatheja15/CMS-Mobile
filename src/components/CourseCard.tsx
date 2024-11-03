@@ -29,7 +29,7 @@ const CourseCard = ({ data }: { data: Course }) => {
                 } rounded-2xl border`}
             >
                 <Image
-                    source={require('../assets/course1.png')}
+                    source={{uri: data?.imageUrl}}
                     className="w-full rounded-2xl h-[203px]"
                 />
                 <View className="p-4">

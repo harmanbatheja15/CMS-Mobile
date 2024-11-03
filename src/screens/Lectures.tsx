@@ -1,4 +1,11 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    Image,
+    TouchableOpacity,
+    Platform,
+} from 'react-native';
 import { useRecoilValue } from 'recoil';
 import { themeAtom } from '../atoms';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -22,7 +29,9 @@ const Lectures = () => {
             <View
                 className={`${
                     isDarkTheme ? 'border-[#1E293B]' : 'border-[#E2E8F0]'
-                } flex flex-row items-center border rounded-lg my-2 px-4`}
+                } flex flex-row items-center border rounded-lg my-2 px-4 ${
+                    Platform.OS === 'ios' ? 'py-2' : 'py-0'
+                }`}
             >
                 <Image
                     source={require('../assets/search-icon.png')}
